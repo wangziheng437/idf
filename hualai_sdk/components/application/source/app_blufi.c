@@ -1,7 +1,7 @@
 /*
  * @Descripttion: 
  * @Date: 2019-07-10 14:56:36
- * @LastEditTime: 2019-07-12 21:48:53
+ * @LastEditTime: 2019-07-14 15:30:34
  */
 
 #include "app_blufi.h"
@@ -120,39 +120,6 @@ char app_blu_analysis(char *buf,int len)
             printf("app->:time_zone:%s\r\n",client_info.time_zone);
 			printf("app->:country:%s\r\n",client_info.country_code);
             printf("app->:time zone local:%s\r\n",client_info.time_code_local);
-
-            #if 0
-			buf[4]=SERV_ODER%256;   //SEND 回复命令号
-			buf[5]=SERV_ODER/256;
-
-			servaddr.sin_port = htons(CLIE_PORT);
-
-			for(i=0;i<5;i++)
-			{
-				int ret=0;
-				ret = sendto(sockfd, buf, len, 0, (struct sockaddr*)&servaddr, sizeof(servaddr));
-				if(ret == -1)
-				{
-					USER_LOG("error:sendto errno=%d",errno);
-				}
-				vTaskDelay(200 / portTICK_RATE_MS);
-			}
-
-			if((strlen(client_info.token)>0)&&(strlen(client_info.wifi_ssid)>0)&&(strlen(client_info.wifi_pass)>0))
-			{
-				wifi_info_t wifi;
-				memcpy(wifi.ssid,client_info.wifi_ssid,strlen(client_info.wifi_ssid)+1);
-				memcpy(wifi.password,client_info.wifi_pass,strlen(client_info.wifi_pass)+1);
-
-				flash_wifi_info_set(&wifi);//存储信息
-				flash_token_set(client_info.token);
-				flash_country_set(client_info.country_code);
-
-				USER_LOG("app->:udp data ok.");
-
-				return  FALSE;
-			}
-            #endif
 		}
 	}
 	else
