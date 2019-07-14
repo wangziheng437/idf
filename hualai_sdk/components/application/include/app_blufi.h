@@ -1,10 +1,10 @@
 /*
  * @Descripttion: 
  * @Date: 2019-07-10 14:14:50
- * @LastEditTime: 2019-07-12 16:16:33
+ * @LastEditTime: 2019-07-14 16:46:20
  */
-#ifndef __BLUFI_H__
-#define __BLUFI_H__
+#ifndef __APP_BLUFI_H__
+#define __APP_BLUFI_H__
 
 #include <stdio.h>
 #include <stdlib.h>

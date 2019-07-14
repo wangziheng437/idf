@@ -2,7 +2,7 @@
  * @Description: Basic support for flash
  * @Author: your name
  * @Date: 2019-06-20 11:54:02
- * @LastEditTime: 2019-07-06 20:21:58
+ * @LastEditTime: 2019-07-14 15:48:54
  * @LastEditors: Please set LastEditors
  */
 #include "sys_base.h"
@@ -41,9 +41,9 @@ int sys_flash_get_flash_crt(sys_flash_iot_crt_t *crt);
  * @param {type} 
  * @return: 
  */
-void sys_flash_int(void)
+int sys_flash_int(void)
 {
-    nvs_flash_init();
+    return nvs_flash_init();
 }
 
 /**

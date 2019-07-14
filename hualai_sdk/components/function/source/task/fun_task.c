@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: your name
  * @Date: 2019-06-16 22:44:32
- * @LastEditTime: 2019-07-12 16:56:42
+ * @LastEditTime: 2019-07-14 16:53:51
  * @LastEditors: Please set LastEditors
  */
 
@@ -107,4 +107,10 @@ void fun_task_create(void)
     xTaskCreate(&blufi, "blufi", 5000, NULL, 5, pvIotTaskHandle);
 
     // xTaskCreate(&fun_task_iot, "fun_task_iot", 8192, NULL, 5, &pvIotTaskHandle);
+
+    while(1)
+    {
+        vTaskDelay(10000 / portTICK_RATE_MS);
+        printf("********************all stack left: %d**********************\n", esp_get_free_heap_size());
+    }
 }

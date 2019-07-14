@@ -1,10 +1,12 @@
 /*
  * @Descripttion: 
  * @Date: 2019-07-10 14:56:36
- * @LastEditTime: 2019-07-14 15:30:34
+ * @LastEditTime: 2019-07-14 16:38:27
  */
 
 #include "app_blufi.h"
+#include "sys_wifi.h"
+#include "sys_flash.h"
 
 static void example_event_callback(esp_blufi_cb_event_t event, esp_blufi_cb_param_t *param);
 
@@ -133,6 +135,8 @@ char app_blu_analysis(char *buf,int len)
 /* connect infor*/
 static uint8_t server_if;
 static uint16_t conn_id;
+
+#if 0
 static esp_err_t example_net_event_handler(void *ctx, system_event_t *event)
 {
     wifi_mode_t mode;
@@ -219,7 +223,6 @@ static esp_err_t example_net_event_handler(void *ctx, system_event_t *event)
     return ESP_OK;
 }
 
-#if 0
 static void initialise_wifi(void)
 {
     tcpip_adapter_init();
@@ -437,14 +440,15 @@ void app_blufi_proc(void)
     esp_err_t ret;
 
     // Initialize NVS
-    ret = nvs_flash_init();
+    ret = sys_flash_int();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
         ESP_ERROR_CHECK(nvs_flash_erase());
         ret = nvs_flash_init();
     }
     ESP_ERROR_CHECK( ret );
 
-    initialise_wifi();
+    // initialise_wifi();
+    sys_wifi_int();
 
     ESP_ERROR_CHECK(esp_bt_controller_mem_release(ESP_BT_MODE_CLASSIC_BT));
 

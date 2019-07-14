@@ -2,7 +2,7 @@
  * @Description: flash header file of system layer
  * @Author: Eric Zhang
  * @Date: 2019-06-23 14:48:21
- * @LastEditTime: 2019-07-06 20:14:27
+ * @LastEditTime: 2019-07-14 15:49:03
  * @LastEditors: Please set LastEditors
  */
 #ifndef __SYS_FLASH_H__
@@ -22,7 +22,7 @@ typedef struct{
  * @param {type} 
  * @return: 
  */
-void sys_flash_int(void);
+int sys_flash_int(void);
 
 /**
  * @description: 
